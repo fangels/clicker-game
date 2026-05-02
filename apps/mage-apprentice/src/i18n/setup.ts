@@ -35,6 +35,8 @@ export const setupI18n = async (defs: GameDefinition): Promise<typeof i18n> => {
     fallbackLng: defs.meta.defaultLocale,
     interpolation: { escapeValue: false },
     returnNull: false,
+    nsSeparator: false,
+    keySeparator: false,
   });
 
   return i18n;

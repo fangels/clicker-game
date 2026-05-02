@@ -16,7 +16,12 @@ export const selectVisibleActions = (state: GameState, defs: GameDefinition): Ac
   defs.actions.filter((a) => canClickAction(a.id, state, defs).visible);
 
 export const selectVisibleUpgrades = (state: GameState, defs: GameDefinition): UpgradeDefinition[] =>
-  defs.upgrades.filter((u) => !u.visibleWhen || evaluateCondition(u.visibleWhen, state, defs));
+  defs.upgrades.filter(
+    (u) =>
+      (state.upgrades[u.id] ?? 0) >= 1 ||
+      !u.visibleWhen ||
+      evaluateCondition(u.visibleWhen, state, defs),
+  );
 
 export const selectActiveQuests = (state: GameState, defs: GameDefinition): QuestDefinition[] =>
   defs.quests.filter((q) => state.quests[q.id] === 'active');
