@@ -2,7 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const base = process.env.BASE_PATH ?? '/';
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     VitePWA({
@@ -14,7 +17,8 @@ export default defineConfig({
         short_name: 'Apprenti Mage',
         description: 'Un mage débutant apprend la magie à travers d’anciens tomes.',
         lang: 'fr',
-        start_url: '/',
+        start_url: base,
+        scope: base,
         display: 'standalone',
         background_color: '#14101f',
         theme_color: '#d4af37',
