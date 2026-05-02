@@ -43,8 +43,8 @@ for (const app of apps) {
 
 const cards = games
   .map(
-    ({ id, base }) => `      <li>
-        <a href=".${base}">
+    ({ id }) => `      <li>
+        <a href="./${id}/">
           <h2>${escapeHtml(id)}</h2>
           <p>Lancer le jeu</p>
         </a>
